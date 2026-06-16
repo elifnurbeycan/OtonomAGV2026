@@ -20,6 +20,41 @@ Bu depo, **SIRIUS AMR** projesi kapsamında Arduino Uno (ATmega328P) mikrodenetl
 
 ---
 
+## 📦 Bağımlılıklar ve Gerekli Kütüphaneler
+
+Sistemi çalıştırmadan önce aşağıdaki paketlerin ve kütüphanelerin bilgisayarınızda (veya Raspberry Pi üzerinde) kurulu olduğundan emin olun:
+
+### 1. İşletim Sistemi ve ROS 2
+* **Ubuntu 22.04 LTS** (veya uyumlu bir Linux sürümü).
+* **ROS 2 Humble Desktop** (veya Jazzy) kurulu olmalıdır.
+
+### 2. Python Kütüphaneleri (PC / Pi Tarafı)
+Seri port haberleşmesi için `pyserial` kütüphanesinin yüklü olması gerekir:
+```bash
+sudo apt update
+sudo apt install -y python3-serial
+# veya pip ile yüklemek isterseniz:
+pip install pyserial
+```
+
+### 3. ROS 2 Paket Bağımlılıkları
+Odometri, transform (TF) ve robot durumu yayını için gerekli standart ROS 2 mesaj paketleri:
+```bash
+sudo apt install -y ros-humble-nav-msgs ros-humble-sensor-msgs ros-humble-geometry-msgs ros-humble-tf2-ros ros-humble-robot-state-publisher
+```
+
+### 4. Arduino Tarafı (Mikrodenetleyici)
+* **Donanım:** Arduino Uno (veya ATmega328P tabanlı Nano/Pro Mini).
+* **Kütüphaneler:** Kodumuz **sıfır-bağımlılık (zero-dependency)** prensibiyle tamamen ham C++ ile optimize edilmiştir. `ArduinoJson` dahil **hiçbir harici kütüphaneye ihtiyaç duymaz**. Sadece Arduino IDE ile yüklü gelen dahili `Wire.h` (I2C) kütüphanesini kullanır.
+
+### 5. Sürüm Kontrolü (Git)
+GitHub işlemlerini ve kod güncellemelerini yönetmek için:
+```bash
+sudo apt install -y git
+```
+
+---
+
 ## 🚀 Sistem Nasıl Çalıştırılır? (Detaylı Kılavuz)
 
 Adımları sırasıyla takip ediniz:
